@@ -9,13 +9,16 @@ public class Ile {
 	int nbRochers = 0;
 
 	Ile() {
-		this.plateau = new Parcelle[10][10];
+		String taille = JOptionPane.showInputDialog(null, "taille de l'ile? ");
+		int tailleI = Integer.valueOf(taille);
+		while (tailleI < 10 || tailleI > 25) { //max et min approximatifs, a voir avec le mode graphique
+			JOptionPane.showMessageDialog(null,"Cette valeur n'est pas autorisee");
+			taille = JOptionPane.showInputDialog(null, "taille de l'ile? ");
+			tailleI = Integer.valueOf(taille);
+		}
+		this.plateau = new Parcelle[tailleI][tailleI];
 	}
-
-	Ile(int taille) {
-		this.plateau = new Parcelle[taille][taille];
-	}
-
+	
 	public void initialiser(double pourcentage) {
 		double pourcentageActuel = 0;
 		nbRochers = 0;
